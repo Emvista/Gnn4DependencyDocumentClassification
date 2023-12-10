@@ -1,0 +1,20 @@
+dataset:
+  directory: ../pyg_data/agnews_large
+  name: ag_news
+  num_classes: 4
+preprocessing:
+  device: cuda:1
+  emb_dim: 1024
+  model: bert-large-uncased
+xp:
+  device: cuda:1
+  directory: ../results/ag_news/gcn2-large-relu-h1536-lr1e2-e200-bz64
+  hparams:
+    activation: torch.nn.functional.relu
+    batch_size: 64
+    dropout: 0.5
+    hidden_channels: 1536
+    lr: 0.01
+    nb_epochs: 200
+    pooling: torch_geometric.nn.global_mean_pool
+  model: model.gcn2.GCN2

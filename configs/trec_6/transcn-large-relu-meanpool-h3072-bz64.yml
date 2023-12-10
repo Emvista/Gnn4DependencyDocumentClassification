@@ -1,0 +1,22 @@
+dataset:
+  directory: ../pyg_data/trec_6_large
+  num_classes: 6
+  name: trec_6
+
+preprocessing:
+  model: bert-large-uncased
+  emb_dim: 1024
+  device: cuda:1
+
+xp:
+  device: cuda:1
+  directory: ../results/trec_6/transcn-large-relu-meanpool-h3072-bz64
+  hparams:
+    activation: torch.nn.functional.relu
+    batch_size: 64
+    dropout: 0.5
+    hidden_channels: 3072
+    lr: 1e-5
+    nb_epochs: 50
+    pooling: torch_geometric.nn.global_mean_pool
+  model: model.transconv.TransCN

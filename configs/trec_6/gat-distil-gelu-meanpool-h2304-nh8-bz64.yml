@@ -1,0 +1,24 @@
+dataset:
+  directory: ../pyg_data/trec_6_distil
+  num_classes: 6
+  name: trec_6
+
+preprocessing:
+  model: distilbert-base-uncased
+  emb_dim: 768
+  device: cuda:1
+
+xp:
+  model: model.gat.GAT
+  device: cuda:1
+  directory: ../results/trec_6/gat-distil-gelu-meanpool-h2304-nh8-bz64
+  hparams:
+    hidden_channels: 2304
+    output_dim: 
+    num_heads: 8
+    dropout: 0.50
+    batch_size: 64
+    lr: 1e-5
+    nb_epochs: 50
+    activation: torch.nn.functional.gelu
+    pooling: torch_geometric.nn.global_mean_pool

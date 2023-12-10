@@ -1,0 +1,23 @@
+dataset:
+  directory: ../pyg_data/agnews_large
+  num_classes: 4
+  name: ag_news
+
+preprocessing:
+  model: bert-large-uncased
+  emb_dim: 1024
+  device: cuda:1
+
+xp:
+  model: model.gat.GAT
+  device: cuda:1
+  directory: ../results/ag_news/gat-large-relu-meanpool-h1536-nh8-bz64
+  hparams:
+    hidden_channels: 1536
+    num_heads: 8
+    dropout: 0.50
+    batch_size: 64
+    lr: 1e-5
+    nb_epochs: 50
+    activation: torch.nn.functional.relu
+    pooling: torch_geometric.nn.global_mean_pool

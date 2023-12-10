@@ -1,0 +1,23 @@
+dataset:
+  directory: ../pyg_data/arxiv_large
+  num_classes: 3
+  name: arxiv
+
+preprocessing:
+  model: bert-large-uncased
+  emb_dim: 1024
+  device: cuda:0
+
+xp:
+  model: model.gin.GIN
+  device: cuda:1
+  directory: ../results/arxiv/gin-large-relu-meanpool-h1536-bz64
+  hparams:
+    hidden_channels: 1536
+    output_dim: 
+    dropout: 0.50
+    batch_size: 64
+    lr: 1e-5
+    nb_epochs: 50
+    activation: torch.nn.functional.relu
+    pooling: torch_geometric.nn.global_mean_pool

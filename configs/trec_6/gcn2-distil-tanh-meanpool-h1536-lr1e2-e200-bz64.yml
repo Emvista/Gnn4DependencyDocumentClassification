@@ -1,0 +1,20 @@
+dataset:
+  directory: ../pyg_data/trec_6_distil
+  name: trec_6
+  num_classes: 6
+preprocessing:
+  device: cuda:1
+  emb_dim: 768
+  model: distilbert-base-uncased
+xp:
+  device: cuda:1
+  directory: ../results/trec_6/gcn2-distil-tanh-meanpool-h1536-lr1e2-e200-bz64
+  hparams:
+    activation: torch.nn.functional.tanh
+    batch_size: 64
+    dropout: 0.5
+    hidden_channels: 1536
+    lr: 0.01
+    nb_epochs: 200
+    pooling: torch_geometric.nn.global_mean_pool
+  model: model.gcn2.GCN2

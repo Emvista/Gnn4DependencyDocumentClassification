@@ -1,0 +1,22 @@
+dataset:
+  directory: ../pyg_data/arxiv_distil
+  num_classes: 3
+  name: arxiv
+
+preprocessing:
+  model: distilbert-base-uncased
+  emb_dim: 768
+  device: cuda:1
+
+xp:
+  model: model.transconv.TransCN
+  device: cuda:1
+  directory: ../results/arxiv/transcn-distil-leakyrelu-meanpool-h1536-bz64
+  hparams:
+    hidden_channels: 1536
+    dropout: 0.50
+    batch_size: 64
+    lr: 1e-5
+    nb_epochs: 50
+    activation: torch.nn.functional.leaky_relu
+    pooling: torch_geometric.nn.global_mean_pool

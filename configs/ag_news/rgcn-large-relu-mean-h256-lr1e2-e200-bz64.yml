@@ -1,0 +1,21 @@
+dataset:
+  directory: ../pyg_data/agnews_large
+  name: ag_news
+  num_classes: 4
+  num_relations: 51
+preprocessing:
+  device: cuda:1
+  emb_dim: 1024
+  model: bert-large-uncased
+xp:
+  device: cuda:1
+  directory: ../results/ag_news/rgcn-large-relu-mean-h256-lr1e2-e200-bz64
+  hparams:
+    activation: torch.nn.functional.relu
+    batch_size: 64
+    dropout: 0.5
+    hidden_channels: 256
+    lr: 1e-2
+    nb_epochs: 200
+    pooling: torch_geometric.nn.global_mean_pool
+  model: model.rgcn.RGCN

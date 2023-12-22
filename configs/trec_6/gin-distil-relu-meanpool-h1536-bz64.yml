@@ -1,0 +1,23 @@
+dataset:
+  directory: ../pyg_data/trec_6_distil
+  num_classes: 6
+  name: trec_6
+
+preprocessing:
+  model: distilbert-base-uncased
+  emb_dim: 768
+  device: cuda:0
+
+xp:
+  model: model.gin.GIN
+  device: cuda:0
+  directory: ../results/trec_6/gin-distil-relu-meanpool-h1536-bz64
+  hparams:
+    hidden_channels: 1536
+    output_dim: 
+    dropout: 0.50
+    batch_size: 64
+    lr: 1e-5
+    nb_epochs: 50
+    activation: torch.nn.functional.relu
+    pooling: torch_geometric.nn.global_mean_pool

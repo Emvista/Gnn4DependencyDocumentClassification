@@ -99,7 +99,7 @@ ptyprocess==0.7.0
 pure-eval==0.2.2
 py4j==0.10.9.7
 pyaml==23.9.7
-pyarrow==13.0.0
+pyarrow==14.0.1
 pybind11==2.11.1
 Pygments==2.16.1
 pyparsing==3.0.9
